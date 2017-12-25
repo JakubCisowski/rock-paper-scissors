@@ -16,18 +16,18 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection) {
-	playerSelectionLower = playerSelection.toLowerCase();
+	let playerSelectionLower = playerSelection.toLowerCase();
 	if( (playerSelectionLower == "rock" && computerSelection == "scissors") || 
 		(playerSelectionLower == "paper" && computerSelection == "rock") ||
 		(playerSelectionLower == "scissors" && computerSelection == "paper")) {
-		return "You win, because "+playerSelectionLower+" beats "+computerSelection+"! :)";
-		userScore++;
+		playerScore++;
+		console.log(countRound++ + ". "+"%cYou win, because "+playerSelectionLower+" beats "+computerSelection+"! :)","background-color:#ccffcc");
 	}
-	if (playerSelectionLower == computerSelection)
-		return "Draw, both you and computer picked "+computerSelection+"!";
+	else if (playerSelectionLower == computerSelection)
+		console.log(countRound++ + ". "+"Draw, both you and computer picked "+computerSelection+"!" );
 	else {
-		return "You lost, because "computerSelection+" beats "+playerSelectionLower+"! :(";
 		computerScore++;
+		console.log (countRound++ + ". "+"%cYou lost, because "+computerSelection+" beats "+playerSelectionLower+"! :(","background-color:#ffcccc" );	
 	}
 } 
 
@@ -39,19 +39,20 @@ function game(rounds) {
 		while ( (playerSelection.toLowerCase() != "rock") && 
 				(playerSelection.toLowerCase() != "paper") && 
 				(playerSelection.toLowerCase() != "scissors") )
-		playround(playerSelection, computerPlay());
+		playRound(playerSelection, computerPlay());
 	}
 
 	if(computerScore > playerScore)
-		alert("Computer won the game "+computerScore+" to "+playerScore"! Better luck next time!");
-	if(computerScore < playerScore)
-		alert("You won the game "+playerScore+" to "+computerScore"! Congratulations!");
+		console.log("* %cComputer won the game "+computerScore+" to "+playerScore+"! Better luck next time! *","font-weight:bold");
+	else if(computerScore < playerScore)
+		console.log("* %cYou won the game "+playerScore+" to "+computerScore+"! Congratulations! *","font-weight:bold");
 	else
-		alert("Draw! "+playerScore+" to "+computerScore"! ");
+		console.log("* %cDraw! "+playerScore+" to "+computerScore+"! *","font-weight:bold");
 
 }
 
-let rounds = prompt("How many rounds do you want to play?")
+let rounds = prompt("How many rounds do you want to play?");
+let countRound = 1;
 let playerScore = 0;
 let computerScore = 0;
 game(rounds);
