@@ -2,13 +2,13 @@
 
 ## Info
 
-*	*Author:* 
+*	**Author:** 
 	Jakub Cisowski
 
-*	*Project goal:* 
+*	**Project goal:**
 	Simple implementation of "rock paper scissors" game
 
-*	*Purpose:* 
+*	**Purpose:**
 	Practice basic JS
 
 --------------------
