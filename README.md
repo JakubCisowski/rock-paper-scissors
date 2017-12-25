@@ -11,5 +11,5 @@
 *	**Purpose:**
 	Practice basic JS
 
---------------------
-![The Odin Project]("https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors?ref=lnav")
+---
+[Project page on *The Odin Project* website](https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors?ref=lnav)
