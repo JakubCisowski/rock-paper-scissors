@@ -15,44 +15,60 @@ function computerPlay() {
 	}
 }
 
+function outputSelection(selection, gamer) {
+	let result = document.querySelector(`.${gamer}-choice`);
+	result.textContent = capitalizeFirstLetter(selection);
+}
+
+function outputResult(winner,playerChoice, computerChoice) {
+	let result = document.querySelector('.result');
+	let details = document.querySelector('.details');
+	let pscore = document.querySelector('.player-score').textContent;
+	pscore++ ;
+	result.style.color = 'black';
+	switch(winner) {
+		case 'player':
+			result.style.color = 'green';
+			result.textContent = "You win! :)";
+			details.textContent = `Your ${playerChoice} has beaten computer's ${computerChoice}`;
+			document.querySelector('.player-score').textContent++;
+			break;
+		case 'computer':
+			result.style.color = 'red';
+			result.textContent = "You loose! :(";
+			details.textContent = `Your ${playerChoice} has lost to computer's ${computerChoice}`;
+			document.querySelector('.computer-score').textContent++;
+			break;
+		default:
+			result.textContent = "Draw!"
+			details.textContent = `You both have chosen ${computerChoice}`;
+	}
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 function playRound(playerSelection, computerSelection) {
 	let playerSelectionLower = playerSelection.toLowerCase();
+	outputSelection(playerSelectionLower, "p");
+	outputSelection(computerSelection, "c");
 	if( (playerSelectionLower == "rock" && computerSelection == "scissors") || 
 		(playerSelectionLower == "paper" && computerSelection == "rock") ||
 		(playerSelectionLower == "scissors" && computerSelection == "paper")) {
-		playerScore++;
-		console.log(countRound++ + ". "+"%cYou win, because "+playerSelectionLower+" beats "+computerSelection+"! :)","background-color:#ccffcc");
+		outputResult('player',playerSelectionLower, computerSelection);
 	}
 	else if (playerSelectionLower == computerSelection)
-		console.log(countRound++ + ". "+"Draw, both you and computer picked "+computerSelection+"!" );
+		outputResult('draw',playerSelectionLower, computerSelection);
 	else {
-		computerScore++;
-		console.log (countRound++ + ". "+"%cYou lost, because "+computerSelection+" beats "+playerSelectionLower+"! :(","background-color:#ffcccc" );	
+		outputResult('computer',playerSelectionLower, computerSelection);
 	}
 } 
 
-function game(rounds) {
-	for(let i=0; i<rounds; i++) {	
-		let playerSelection = "";
-		do 
-			playerSelection = prompt("Choose your throw!");
-		while ( (playerSelection.toLowerCase() != "rock") && 
-				(playerSelection.toLowerCase() != "paper") && 
-				(playerSelection.toLowerCase() != "scissors") )
-		playRound(playerSelection, computerPlay());
-	}
-
-	if(computerScore > playerScore)
-		console.log("* %cComputer won the game "+computerScore+" to "+playerScore+"! Better luck next time! *","font-weight:bold");
-	else if(computerScore < playerScore)
-		console.log("* %cYou won the game "+playerScore+" to "+computerScore+"! Congratulations! *","font-weight:bold");
-	else
-		console.log("* %cDraw! "+playerScore+" to "+computerScore+"! *","font-weight:bold");
-
-}
-
-let rounds = prompt("How many rounds do you want to play?");
-let countRound = 1;
-let playerScore = 0;
-let computerScore = 0;
-game(rounds);
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => { 
+  button.addEventListener('click', (e) => { 
+	let choice = button.textContent;
+	playRound(choice ,computerPlay());
+  });
+});
