@@ -1,23 +1,8 @@
 # Rock Paper Scissors
+https://jakubcisowski.github.io/rock-paper-scissors/
 
-## Project info
+## How it works
+It is a simple rock paper scissors minigame. User can play multiple rounds: he chooses his next move and checks if he won.
 
-*	**Author:** 
-	*Jakub Cisowski*
-
-*	**Project goal:**
-	*Simple implementation of "rock paper scissors" game*
-
-*	**Purpose:**
-	*Practice basic JS*
-
-## Instruction
-
-*	Everytime player wants to play a round with computer, he has to press button with chosen throw
-
-*	Computer's throw, results of the round, and also overall score is displayed below the buttons
-
-*	To play a new game (reset score), player can refresh the page by pressing `F5` or `RPM`->`Reload`
-
----
-[Project page on *The Odin Project* website](https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors?ref=lnav)
+## Features
+*	*reset score* button (you can also refresh the page to do it)
